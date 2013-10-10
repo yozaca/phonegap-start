@@ -1,0 +1,133 @@
+<!doctype html>
+
+<html lang="es">
+	<head>
+		<title>ddddd</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="/maps/documentation/javascript/examples/default.css" rel="stylesheet">
+
+
+		<link rel="stylesheet" href="css/jquery.mobile-1.3.2.css" />
+		<link rel="stylesheet" href="css/azul.css" />
+		<link rel="stylesheet" href="css/estilos.css" />
+		
+		
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery.mobile-1.3.2.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+
+		    <script>
+var map;
+
+function initialize() {
+  var mapOptions = {
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  // Try HTML5 geolocation
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
+
+      var infowindow = new google.maps.InfoWindow({
+        map: map,
+        position: pos,
+        content: 'Location found using HTML5.'
+      });
+
+      map.setCenter(pos);
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+  }
+}
+
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    var content = 'Error: La localizacion ha fallado.';
+  } else {
+    var content = 'Error: tu navegador no soporta la geolocation.';
+  }
+
+  var options = {
+    map: map,
+    position: new google.maps.LatLng(60, 105),
+    content: content
+  };
+
+  var infowindow = new google.maps.InfoWindow(options);
+  map.setCenter(options.position);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+
+
+	</head>
+	
+	<body>
+
+		<div id="map-canvas"></div>
+
+
+
+
+		<div data-role="page" id="home" data-theme="a"><!-- /pagina -->
+			<!-- header -->
+			<header data-role="header"  data-position="fixed" >
+				<h1><img src="img/logo.png"></h1>
+				<div data-role="navbar" data-iconpos="right">
+					<ul>
+						<li><a data-ajax="false" data-icon="grid" href="index.html" >Rss</a></li>
+						<li><a data-ajax="false" data-icon="star" href="mapa.html"  class="ui-btn-active" >Estoy aqui</a></li>
+						<li><a data-ajax="false" data-icon="edit" href="contacto.html">Contacto</a></li>
+	</ul>
+				</div>
+
+			</header>
+
+			
+
+			<section data-role="content">
+
+			
+				
+			</section>
+
+
+		<footer data-role="footer" data-position="fixed">
+				
+			<h4><img src="img/aralee.gif" id="tam75"><img src="img/aralee.gif" ><img src="img/aralee.gif" id="tam65"></h4>
+		</footer>
+
+		</div><!-- /se cierra el data role page -->
+
+
+		
+
+
+
+
+
+
+		
+
+
+	</body>
+</html>
+
+
+
+
+
+
